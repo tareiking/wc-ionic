@@ -1,17 +1,36 @@
 <ion-view class="speaker">
 <ion-nav-bar>
   <ion-nav-back-button class="button-clear">
-	<i class="icon ion-ios-arrow-left"></i> Back
+  <i class="icon ion-ios-arrow-left"></i> Back
   </ion-nav-back-button>
   </ion-nav-bar>
     <ion-nav-title>
       {{speaker.title}}
     </ion-nav-title>
   <ion-content class="padding">
+
+  <h6>ABOUT</h6>
   <div class="card">
     <div class="item item-text-wrap">
       <div ng-bind-html="speaker.content"></div>
     </div>
+  </div>
+
+  <h6>SESSION</h6>
+  <i class="icon ion-ios-calendar-outline"></i> <span class="time"><strong>Saturday 10:00</span>
+
+  <div class="card">
+    <div class="item item-text-wrap">
+      Room 1023 - The Cube
+    </div>
+
+    <div class="item tabs tabs-secondary tabs-icon-left item-divider">
+      <a class="tab-item" href="#">
+        <i class="icon ion-ios-star-outline"></i>
+        Add to Favorites
+      </a>
+    </div>
+
   </div>
 
   </ion-content>
