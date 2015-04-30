@@ -1,13 +1,14 @@
 <ion-view view-title="Speakers">
   <ion-content>
-	<ion-item collection-repeat="post in posts"  href="#/app/detail/{{post.ID}}" class="item item-avatar">
-		<img src="{{ speaker.normal }}" alt="" class="">
+	<ion-item collection-repeat="post in posts"  href="#/app/detail/{{post.ID}}" class="item item-avatar item-icon-right">
+		<img src="{{ speaker.epic }}" alt="" class="">
 		<h2>
 			{{ post.title }}
 		</h2>
 		<p>
-			Speaking on: ....
+			Let's do WordPress
 		</p>
+		 <i class="icon ion-ios-arrow-right"></i>
 	</ion-item>
   </ion-content>
 </ion-view>
