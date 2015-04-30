@@ -1,7 +1,13 @@
 <ion-view view-title="Speakers">
   <ion-content>
-	<ion-item collection-repeat="post in posts"  href="#/app/detail/{{post.ID}}">
-		{{ post.title }}
+	<ion-item collection-repeat="post in posts"  href="#/app/detail/{{post.ID}}" class="item item-avatar">
+		<img src="{{ speaker.normal }}" alt="" class="">
+		<h2>
+			{{ post.title }}
+		</h2>
+		<p>
+			Speaking on: ....
+		</p>
 	</ion-item>
   </ion-content>
 </ion-view>
