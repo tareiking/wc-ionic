@@ -46,6 +46,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
+  .state('app.speaker', {
+    url: "/speaker/:id",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/speaker.html",
+        controller: 'SpeakerCtrl'
+      }
+    }
+  })
+
   .state('app.sessions', {
     url: "/sessions",
     views: {

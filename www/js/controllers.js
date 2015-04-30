@@ -54,6 +54,16 @@ angular.module('starter.controllers', [])
     });
 })
 
+.controller('SpeakerCtrl', function($scope, $stateParams, $http) {
+  $http.get('http://brisbane.wordcamp.org/2015/wp-json/posts/' + $stateParams.id).
+    success(function(data, status, headers, config) {
+      $scope.speaker = data;
+    }).
+    error(function(data, status, headers, config) {
+      // log error
+    });
+})
+
 .controller('DetailCtrl', function($scope, $stateParams, $http) {
   $http.get('http://brisbane.wordcamp.org/2015/wp-json/posts/' + $stateParams.id).
     success(function(data, status, headers, config) {
