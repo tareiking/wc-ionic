@@ -8,6 +8,9 @@
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
         </button>
       </ion-nav-buttons>
+      <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear ion-home" menu-toggle="right">
+        </button>
     </ion-nav-bar>
     <ion-nav-view name="menuContent"></ion-nav-view>
   </ion-side-menu-content>
@@ -20,12 +23,15 @@
 
       <ion-list>
         <ion-item nav-clear menu-close href="#/app/speakers">
+          <i class="icon ion-mic-a"></i>
           Speakers
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/sessions">
+          <i class="icon ion-ios-list-outline"></i>
           Sessions
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/venue">
+          <i class="icon ion-map"></i>
           Venue
         </ion-item>
       </ion-list>
