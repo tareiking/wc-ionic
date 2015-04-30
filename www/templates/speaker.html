@@ -1,0 +1,18 @@
+<ion-view class="speaker">
+<ion-nav-bar>
+  <ion-nav-back-button class="button-clear">
+	<i class="icon ion-ios-arrow-left"></i> Back
+  </ion-nav-back-button>
+  </ion-nav-bar>
+    <ion-nav-title>
+      {{speaker.title}}
+    </ion-nav-title>
+  <ion-content class="padding">
+  <div class="card">
+    <div class="item item-text-wrap">
+      <div ng-bind-html="speaker.content"></div>
+    </div>
+  </div>
+
+  </ion-content>
+</ion-view>
