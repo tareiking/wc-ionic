@@ -1,4 +1,12 @@
 {
   "name": "wcbne-sidemenu",
-  "app_id": "161ec093"
+  "app_id": "161ec093",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
 }
