@@ -1,7 +1,7 @@
 <ion-view view-title="Speakers">
   <ion-content>
-	<ion-item collection-repeat="post in posts"  href="#/app/speaker/{{post.ID}}" class="item item-avatar item-icon-right">
-		<img src="{{ speaker.epic }}" alt="" class="">
+	<ion-item ng-repeat="post in posts"  href="#/app/speaker/{{post.ID}}" class="item item-avatar item-icon-right">
+		<img src="{{ speaker.epic }}" alt="{{post.title}}">
 		<h2>
 			{{ post.title }}
 		</h2>

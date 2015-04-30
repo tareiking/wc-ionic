@@ -1,6 +1,6 @@
 <ion-view view-title="Sessions">
   <ion-content>
-	<ion-item collection-repeat="post in posts"  href="#/app/detail/{{post.ID}}">
+	<ion-item ng-repeat="post in posts"  href="#/app/detail/{{post.ID}}">
 		{{ post.title }}
 	</ion-item>
   </ion-content>
