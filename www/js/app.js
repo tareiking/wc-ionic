@@ -75,6 +75,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     })
 
+    .state('app.sponsors', {
+      url: "/sponsors",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/sponsors.html",
+          controller: 'SponsorsCtrl'
+        }
+      }
+    })
+
   .state('app.detail', {
     url: "/detail/:id",
     views: {
