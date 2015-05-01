@@ -17,10 +17,19 @@ angular.module('starter.controllers', [])
   $http.get('http://brisbane.wordcamp.org/2015/wp-json/posts/' + $stateParams.id).
     success(function(data, status, headers, config) {
       $scope.speaker = data;
+
+      $avatar = $scope.speaker.avatar;
+
+      if ( ! $avatar ) {
+        $avatar = "img/placeholder.png";
+      };
+
+      $scope.speaker.avatar = $avatar.replace( '?s=96', '?s=256');
+
     }).
     error(function(data, status, headers, config) {
       // log error
-    });
+    })
 })
 
 .controller('DetailCtrl', function($scope, $stateParams, $http) {
