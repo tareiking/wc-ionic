@@ -4,16 +4,6 @@ angular.module('starter.controllers', [])
 
 .controller('SpeakersCtrl', function($scope, $stateParams, $http) {
 
-  // Avatar
-  // http://uifaces.com/api/v1/random/
-  $http.get('http://uifaces.com/api/v1/random/').
-    success(function(data, status, headers, config) {
-      $scope.speaker = data.image_urls;
-    }).
-    error(function(data, status, headers, config) {
-      $scope.speaker = 'img/ionic.png';
-    });
-
   $http.get('http://brisbane.wordcamp.org/2015/wp-json/posts?type=wcb_speaker').
     success(function(data, status, headers, config) {
       $scope.posts = data;
