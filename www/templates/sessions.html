@@ -1,8 +1,24 @@
 <ion-view view-title="Sessions">
   <ion-content>
-	<ion-item ng-repeat="post in posts"  href="#/app/detail/{{post.ID}}">
-		{{ post.title }}
+
+<div class="item item-divider">
+	<p>Saturday</p>
+</div>
+<div ng-repeat="post in posts">
+	<ion-item class="item item-text-wrap item-icon-right" href="#/app/detail/{{post.ID}}">
+		<div ng-bind-html="post.title"></div>
+		<span>[ Developer Track ] | [ Time ] | [ Venue ]</span>
+		<br>
+		<span>[ Speaker ] </span>
+		 <i class="icon ion-ios-arrow-right"></i>
 	</ion-item>
+
+	<div class="item item-divider" ng-if="!(($index + 1) % 4)">
+		<p>Sunday</p>
+	</div>
+
+	</div>
+
   </ion-content>
 </ion-view>
 
