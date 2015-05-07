@@ -4,10 +4,16 @@ angular.module('starter.controllers', [])
 })
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {})
 
-.controller('SpeakersCtrl', function($scope, $stateParams, $http, apiEndpoint) {
+.controller('SpeakersCtrl', function($scope, $stateParams, $http, apiEndpoint, $ionicLoading) {
+
+  $ionicLoading.show({
+    template: 'getting fresh data...',
+    noBackdrop: true,
+  })
 
   $http.get( apiEndpoint.url + '?type=wcb_speaker').
     success(function(data, status, headers, config) {
+      $ionicLoading.hide()
       $scope.posts = data;
 
     }).
