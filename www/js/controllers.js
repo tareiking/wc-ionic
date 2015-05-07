@@ -88,5 +88,16 @@ angular.module('starter.controllers', [])
   };
 })
 
+.controller('HomeCtrl', function($scope, $stateParams, $http, $ionicSlideBoxDelegate) {
+  $http.get( 'https://central.wordcamp.org/wp-json/posts?type=wordcamp').
+    success(function(data, status, headers, config) {
+      $scope.posts = data;
+      $ionicSlideBoxDelegate.update();
+    }).
+    error(function(data, status, headers, config) {
+      // log error
+    });
+})
+
 ;
 
