@@ -21,3 +21,22 @@
 	margin: 0 2px 0 2px;
 	display: inline-block;
 }
+
+.home-slider {
+	height: 180px;
+
+	.home-slide {
+		img {
+			max-width: 100%;
+		}
+	}
+
+	.slide-title {
+		position: absolute;
+		top: 10px;
+		left: 10px;
+		color: white;
+		background-color: rgba(0,0,0,0.5);
+		font-size: 18px;
+	}
+}
