@@ -7680,3 +7680,8 @@ a.button {
 
 .speaker .card ul .p1 {
   display: none !important; }
+
+.wc-badge {
+  padding: 2px 5px;
+  background-color: #e3e3e3;
+  border-radius: 2px; }
