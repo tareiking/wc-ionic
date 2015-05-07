@@ -1,20 +1,23 @@
 angular.module('starter.controllers', [])
-
+.constant('apiEndpoint', {
+    'url': 'http://brisbane.wordcamp.org/2015/wp-json/posts/'
+})
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {})
 
-.controller('SpeakersCtrl', function($scope, $stateParams, $http) {
+.controller('SpeakersCtrl', function($scope, $stateParams, $http, apiEndpoint) {
 
-  $http.get('http://brisbane.wordcamp.org/2015/wp-json/posts?type=wcb_speaker').
+  $http.get( apiEndpoint.url + '?type=wcb_speaker').
     success(function(data, status, headers, config) {
       $scope.posts = data;
+
     }).
     error(function(data, status, headers, config) {
       // log error
     });
 })
 
-.controller('SpeakerCtrl', function($scope, $stateParams, $http) {
-  $http.get('http://brisbane.wordcamp.org/2015/wp-json/posts/' + $stateParams.id).
+.controller('SpeakerCtrl', function($scope, $stateParams, $http, apiEndpoint) {
+  $http.get( apiEndpoint.url + $stateParams.id).
     success(function(data, status, headers, config) {
       $scope.speaker = data;
 
@@ -32,8 +35,8 @@ angular.module('starter.controllers', [])
     })
 })
 
-.controller('DetailCtrl', function($scope, $stateParams, $http) {
-  $http.get('http://brisbane.wordcamp.org/2015/wp-json/posts/' + $stateParams.id).
+.controller('DetailCtrl', function($scope, $stateParams, $http, apiEndpoint) {
+  $http.get( apiEndpoint.url  + $stateParams.id).
     success(function(data, status, headers, config) {
       $scope.post = data;
     }).
@@ -42,8 +45,8 @@ angular.module('starter.controllers', [])
     });
 })
 
-.controller('SponsorsCtrl', function($scope, $stateParams, $http) {
-  $http.get('http://brisbane.wordcamp.org/2015/wp-json/posts?type=wcb_sponsor').
+.controller('SponsorsCtrl', function($scope, $stateParams, $http, apiEndpoint) {
+  $http.get( apiEndpoint.url + '?type=wcb_sponsor').
     success(function(data, status, headers, config) {
       $scope.posts = data;
     }).
@@ -53,8 +56,8 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('SessionCtrl', function($scope, $stateParams, $http) {
-  $http.get('http://brisbane.wordcamp.org/2015/wp-json/posts?type=wcb_session').
+.controller('SessionCtrl', function($scope, $stateParams, $http, apiEndpoint) {
+  $http.get( apiEndpoint.url + '?type=wcb_session').
     success(function(data, status, headers, config) {
       $scope.posts = data;
     }).
@@ -63,7 +66,7 @@ angular.module('starter.controllers', [])
     });
 })
 
-.controller('VenueCtrl', function($scope, $stateParams, $http) {
+.controller('VenueCtrl', function($scope, $stateParams, $http, apiEndpoint) {
 
   $scope.data = {
     "title":"Venue",
