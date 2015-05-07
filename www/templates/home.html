@@ -15,8 +15,9 @@
 	<div class="padding">
 	<h3>Upcoming WordCamps</h3>
 	<ion-list class="list list-inset">
-		<ion-item class="item" ng-repeat="post in posts">
+		<ion-item ng-repeat="post in posts" href="#/app/wordcamp/{{post.ID}}" class="item item-icon-right">
 			{{post.title}}
+		 <i class="icon ion-ios-arrow-right"></i>
 		</ion-item>
 	</ion-list>
 	</div>

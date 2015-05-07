@@ -95,6 +95,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
+  .state('app.wordcamp', {
+    url: "/wordcamp/:id",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/wordcamp.html",
+        controller: 'WordCampCtrl'
+      }
+    }
+  })
+
   .state('app.home', {
     url: "/home",
     views: {
