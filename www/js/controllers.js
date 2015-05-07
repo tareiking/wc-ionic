@@ -9,6 +9,7 @@ angular.module('starter.controllers', [])
   $ionicLoading.show({
     template: 'getting fresh data...',
     noBackdrop: true,
+    delay: 1,
   })
 
   $http.get( apiEndpoint.url + '?type=wcb_speaker').
@@ -22,10 +23,18 @@ angular.module('starter.controllers', [])
     });
 })
 
-.controller('SpeakerCtrl', function($scope, $stateParams, $http, apiEndpoint) {
+.controller('SpeakerCtrl', function($scope, $stateParams, $http, apiEndpoint, $ionicLoading) {
+
+  $ionicLoading.show({
+    template: 'getting fresh data...',
+    noBackdrop: true,
+    delay: 1,
+  })
+
   $http.get( apiEndpoint.url + $stateParams.id).
     success(function(data, status, headers, config) {
       $scope.speaker = data;
+      $ionicLoading.hide()
 
       $avatar = $scope.speaker.avatar;
 
