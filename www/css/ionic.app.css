@@ -7684,4 +7684,18 @@ a.button {
 .wc-badge {
   padding: 2px 5px;
   background-color: #e3e3e3;
-  border-radius: 2px; }
+  border-radius: 2px;
+  margin: 0 2px 0 2px;
+  display: inline-block; }
+
+.home-slider {
+  height: 180px; }
+  .home-slider .home-slide img {
+    max-width: 100%; }
+  .home-slider .slide-title {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 18px; }
