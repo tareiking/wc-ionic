@@ -26,9 +26,9 @@ angular.module('starter.controllers', [])
 .controller('SpeakerCtrl', function($scope, $stateParams, $http, apiEndpoint, $ionicLoading) {
 
   $ionicLoading.show({
-    template: 'getting fresh data...',
+    template: 'Retrieving speaker awesomeness',
     noBackdrop: true,
-    delay: 1,
+    delay: 2,
   })
 
   $http.get( apiEndpoint.url + $stateParams.id).
