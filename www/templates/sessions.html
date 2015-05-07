@@ -6,10 +6,14 @@
 </div>
 <div ng-repeat="post in posts">
 	<ion-item class="item item-text-wrap item-icon-right" href="#/app/detail/{{post.ID}}">
-		<div ng-bind-html="post.title"></div>
-		<span>[ Developer Track ] | [ Time ] | [ Venue ]</span>
+		<h2 ng-bind-html="post.title"></h2>
+		<h2 class="speaker">{{post.speaker.title}}</h2>
+		<div>
+			<span class="wc-badge">{{ post.terms.wcb_track[0].name }}</span>
+			<span class="wc-badge badge-time">{{ post.post_meta[0].value }}</span>
+			<span class="wc-badge badge-room">Room</span>
+		</div>
 		<br>
-		<span>[ Speaker ] </span>
 		 <i class="icon ion-ios-arrow-right"></i>
 	</ion-item>
 
