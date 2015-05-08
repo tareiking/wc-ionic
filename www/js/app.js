@@ -6,114 +6,114 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'ngStorage'])
 
-.run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    if (window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-    }
-    if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
-    }
-  });
-})
-.filter('split', function() {
-  return function(input, splitChar, splitIndex) {
-      // do some bounds checking here to ensure it has that index
-      return input.split(splitChar)[splitIndex];
-  }
-})
-
-.config(function($stateProvider, $urlRouterProvider) {
-  $stateProvider
-
-  .state('app', {
-    url: "/app",
-    abstract: true,
-    templateUrl: "templates/menu.html",
-    controller: 'AppCtrl'
-  })
-
-  .state('app.speakers', {
-    url: "/speakers",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/speakers.html",
-        controller: 'SpeakersCtrl'
-      }
-    }
-  })
-
-  .state('app.speaker', {
-    url: "/speaker/:id",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/speaker.html",
-        controller: 'SpeakerCtrl'
-      }
-    }
-  })
-
-  .state('app.sessions', {
-    url: "/sessions",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/sessions.html",
-        controller: 'SessionCtrl'
-      }
-    }
-  })
-    .state('app.venue', {
-      url: "/venue",
-      views: {
-        'menuContent': {
-          templateUrl: "templates/venue.html",
-          controller: 'VenueCtrl'
+    .run(function ($ionicPlatform) {
+        $ionicPlatform.ready(function () {
+            // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+            // for form inputs)
+            if (window.cordova && window.cordova.plugins.Keyboard) {
+                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+            }
+            if (window.StatusBar) {
+                // org.apache.cordova.statusbar required
+                StatusBar.styleDefault();
+            }
+        });
+    })
+    .filter('split', function () {
+        return function (input, splitChar, splitIndex) {
+            // do some bounds checking here to ensure it has that index
+            return input.split(splitChar)[splitIndex];
         }
-      }
     })
 
-    .state('app.sponsors', {
-      url: "/sponsors",
-      views: {
-        'menuContent': {
-          templateUrl: "templates/sponsors.html",
-          controller: 'SponsorsCtrl'
-        }
-      }
-    })
+    .config(function ($stateProvider, $urlRouterProvider) {
+        $stateProvider
 
-  .state('app.detail', {
-    url: "/detail/:id",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/detail.html",
-        controller: 'DetailCtrl'
-      }
-    }
-  })
+            .state('app', {
+                url: "/app",
+                abstract: true,
+                templateUrl: "templates/menu.html",
+                controller: 'AppCtrl'
+            })
 
-  .state('app.wordcamp', {
-    url: "/wordcamp/:id",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/wordcamp.html",
-        controller: 'WordCampCtrl'
-      }
-    }
-  })
+            .state('app.speakers', {
+                url: "/speakers",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/speakers.html",
+                        controller: 'SpeakersCtrl'
+                    }
+                }
+            })
 
-  .state('app.home', {
-    url: "/home",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/home.html",
-        controller: 'HomeCtrl'
-      }
-    }
-  });
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/speakers');
-});
+            .state('app.speaker', {
+                url: "/speaker/:id",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/speaker.html",
+                        controller: 'SpeakerCtrl'
+                    }
+                }
+            })
+
+            .state('app.sessions', {
+                url: "/sessions",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/sessions.html",
+                        controller: 'SessionCtrl'
+                    }
+                }
+            })
+            .state('app.venue', {
+                url: "/venue",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/venue.html",
+                        controller: 'VenueCtrl'
+                    }
+                }
+            })
+
+            .state('app.sponsors', {
+                url: "/sponsors",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/sponsors.html",
+                        controller: 'SponsorsCtrl'
+                    }
+                }
+            })
+
+            .state('app.detail', {
+                url: "/detail/:id",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/detail.html",
+                        controller: 'DetailCtrl'
+                    }
+                }
+            })
+
+            .state('app.wordcamp', {
+                url: "/wordcamp/:id",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/wordcamp.html",
+                        controller: 'WordCampCtrl'
+                    }
+                }
+            })
+
+            .state('app.home', {
+                url: "/home",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/home.html",
+                        controller: 'HomeCtrl'
+                    }
+                }
+            });
+        // if none of the above states are matched, use this as the fallback
+        $urlRouterProvider.otherwise('/app/speakers');
+    });
