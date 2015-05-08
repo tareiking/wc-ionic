@@ -4,23 +4,50 @@ angular.module('starter.controllers', [])
 })
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {})
 
-.controller('SpeakersCtrl', function($scope, $stateParams, $http, apiEndpoint, $ionicLoading) {
+.controller('SpeakersCtrl', function($scope, $stateParams, $http, apiEndpoint, $ionicLoading, $localStorage) {
 
-  $ionicLoading.show({
-    template: 'getting fresh data...',
-    noBackdrop: true,
-    delay: 1,
-  })
+  // Let used cached data
+  var cached = $localStorage.speakers;
+  if (cached) {
+    console.log('speakers loaded cache')
+    $scope.posts = cached;
+    $ionicLoading.hide()
+  }
+  else {
+    // Indicate we are loading something
+    $ionicLoading.show({
+      template: 'getting fresh data...',
+      noBackdrop: true,
+      delay: 1,
+    })
 
-  $http.get( apiEndpoint.url + '?type=wcb_speaker').
+    // Run and get data
+    $http.get( apiEndpoint.url + '?type=wcb_speaker').
     success(function(data, status, headers, config) {
-      $ionicLoading.hide()
+
       $scope.posts = data;
+      $localStorage.speakers = data;
+
+      $ionicLoading.hide()
 
     }).
     error(function(data, status, headers, config) {
       // log error
     });
+  }
+
+    $scope.doRefresh = function() {
+    $http.get( apiEndpoint.url + '?type=wcb_speaker').
+     success(function(data) {
+        $scope.posts = data;
+        $localStorage.speakers = data;
+        console.log('new speakers list loaded from remote');
+     })
+     .finally(function() {
+       $scope.$broadcast('scroll.refreshComplete');
+     });
+  }
+
 })
 
 .controller('SpeakerCtrl', function($scope, $stateParams, $http, apiEndpoint, $ionicLoading) {
@@ -82,10 +109,13 @@ angular.module('starter.controllers', [])
 })
 
 .controller('VenueCtrl', function($scope, $stateParams, $http, apiEndpoint) {
-
-  $scope.data = {
-    "title":"Venue",
-  };
+    $http.get( 'https://central.wordcamp.org/wp-json/posts/3038603').
+    success(function(data, status, headers, config) {
+      $scope.post = data;
+    }).
+    error(function(data, status, headers, config) {
+      // log error
+    });
 })
 
 .controller('HomeCtrl', function($scope, $stateParams, $http, $ionicSlideBoxDelegate) {
@@ -103,7 +133,11 @@ angular.module('starter.controllers', [])
   $http.get('https://central.wordcamp.org/wp-json/posts/' + $stateParams.id ).
     success(function(data, status, headers, config) {
       $scope.wordcamp = data;
-      console.log( $scope.wordcamp );
+
+      // return post meta
+      // 
+      $scope.meta = data.post_meta;
+
     }).
     error(function(data, status, headers, config) {
       // log error
