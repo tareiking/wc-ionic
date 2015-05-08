@@ -29,11 +29,13 @@
   </div>
 
   <h6>SESSION</h6>
-  <i class="icon ion-ios-calendar-outline"></i> <span class="time"><strong>Saturday 10:00</span>
 
   <div class="card">
-    <div class="item item-text-wrap">
-      Room 1023 - The Cube
+    <div class="item item-text-wrap" >
+      <a href="/#/app/detail/{{speaker.sessions[0].ID}}"><span ng-bind-html="speaker.sessions[0].title"></span></a><br><br>
+      <i class="icon ion-ios-calendar-outline"></i>
+      <span class="time"><strong>{{ speaker.sessions[0].post_meta[0].value | date : 'EEE hh:mm' }}</strong></span><br>
+      {{ speaker.sessions[0].terms.wcb_track[0].name }}
     </div>
 
     <div class="item tabs tabs-secondary tabs-icon-left item-divider">
@@ -45,11 +47,5 @@
 
   </div>
 
-  <div>
-    {{ speaker }}
-
-  </div>
-
   </ion-content>
-    }
 </ion-view>
