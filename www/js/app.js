@@ -115,5 +115,5 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngStorage'])
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/home');
+  $urlRouterProvider.otherwise('/app/speakers');
 });
