@@ -1,0 +1,29 @@
+<ion-view class="wordcamp">
+<ion-nav-bar class="bar-stable">
+  <ion-nav-back-button class="button-clear">
+  <i class="icon ion-ios-arrow-left"></i> Back
+  </ion-nav-back-button>
+  </ion-nav-bar>
+    <ion-nav-title>
+      {{wordcamp.title}}
+    </ion-nav-title>
+      <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear ion-ios-home-outline" menu-toggle="right">
+        </button>
+      </ion-nav-buttons>
+  <ion-content class="padding">
+
+  <h6>ABOUT</h6>
+  <div class="card">
+    <div class="item item-text-wrap">
+      <div ng-bind-html="wordcamp.content"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h1>Debug</h1>
+    {{ wordcamp }}
+  </div>
+
+  </ion-content>
+</ion-view>

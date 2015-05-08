@@ -133,9 +133,6 @@ angular.module('starter.controllers', [])
   $http.get('https://central.wordcamp.org/wp-json/posts/' + $stateParams.id ).
     success(function(data, status, headers, config) {
       $scope.wordcamp = data;
-
-      // return post meta
-      // 
       $scope.meta = data.post_meta;
 
     }).
