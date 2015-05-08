@@ -56,6 +56,7 @@ angular.module('starter.controllers', [])
     template: 'Retrieving speaker awesomeness',
     noBackdrop: true,
     delay: 2,
+    duration: 15,
   })
 
   $http.get( apiEndpoint.url + $stateParams.id).
