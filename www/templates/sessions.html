@@ -4,16 +4,25 @@
                 pulling-text="Pull to refresh..."
                 on-refresh="doRefresh()">
         </ion-refresher>
-        <ion-item ng-repeat="post in posts | orderBy : 'post_meta[0].value'" href="#/app/detail/{{post.ID}}" class="item item-avatar item-icon-right">
+        <div ng-repeat="post in posts | orderBy : 'post_meta[0].value'" ng-switch="post.speaker.title || '_none'" >
 
-            <img ng-src="{{ post.speaker.avatar }}">
+            <div ng-switch-when="_none" class="item item-divider">
+                {{ ( post.post_meta[0].value * 1000 ) + 7200000 - 43200000 | date: 'h:mm' }}  {{post.title}}
+            </div>
 
-            <h2 class="speaker" ng-bind-html="post.title"></h2>
+            <span ng-switch-default>
+                <ion-item href="#/app/detail/{{post.ID}}" class="item item-avatar item-icon-right">
 
-            <p class="title item-wrap-text">{{ ( post.post_meta[0].value * 1000 ) + 7200000 - 43200000 | date: 'EEE h:mm' }} - {{ post.terms.wcb_track[0].name }}</p>
-            <i class="icon ion-ios-arrow-right"></i>
-        </ion-item>
+                    <img ng-src="{{ post.speaker.avatar }}">
 
+                    <h2 class="speaker" ng-bind-html="post.title"></h2>
+
+                    <p class="title item-wrap-text">{{ ( post.post_meta[0].value * 1000 ) + 7200000 - 43200000 | date: 'EEE h:mm' }} - {{ post.terms.wcb_track[0].name }}</p>
+                    <i class="icon ion-ios-arrow-right"></i>
+                </ion-item>
+            </span>
+
+        </div>
     </ion-content>
 </ion-view>
 
