@@ -4,7 +4,7 @@
                 pulling-text="Pull to refresh..."
                 on-refresh="doRefresh()">
         </ion-refresher>
-        <ion-item ng-repeat="post in posts" href="#/app/speaker/{{post.ID}}" class="item item-avatar item-icon-right">
+        <ion-item ng-repeat="post in posts | orderBy : 'title'" href="#/app/speaker/{{post.ID}}" class="item item-avatar item-icon-right">
             <img ng-src="{{ post.avatar }}" alt="{{post.title}}">
 
             <h2>
