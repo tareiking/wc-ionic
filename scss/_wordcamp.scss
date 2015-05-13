@@ -14,14 +14,6 @@
   }
 }
 
-.wc-badge {
-	padding: 2px 5px;
-	background-color: #e3e3e3;
-	border-radius: 2px;
-	margin: 0 2px 0 2px;
-	display: inline-block;
-}
-
 .home-slider {
 	height: 180px;
 
@@ -77,29 +69,29 @@
 .session-card {
 
   .card-bg {
-
     position: absolute;
     top: -50%;
     left: 0;
-    width: 200%;
-    -webkit-filter: blur(200px);
+    width: 150%;
+    -webkit-filter: blur(50px);
     -webkit-transform: translate3d(0, 0, 0);
   }
 
   .title-block {
-    ;
+    min-height: 250px;
     overflow: hidden;
     position: relative;
     display: block;
     padding: 15px 10px 35px 15px;
     border-top: #e3e3e3 solid 2px;
+    text-shadow: -2px 1px 8px rgba( 0,0,0,0.2 );
+    background-color: #ececec;
 
     .title {
       color: white;
       position: relative;
       z-index: 10;
       font-size: 48px;
-      text-shadow: 
     }
   }
 
@@ -109,11 +101,23 @@
 
   .track {
     padding: 2px 4px;
-    border: 1px solid #ebebeb;
-    background-color: white;
-    color: #1f66ad; // card BG
+    border: 1px solid #ececec;
+    background-color: #ececec;
+    color: black; // card BG
     text-transform: uppercase;
     float: right;
+    z-index: 20;
+    position: relative;
   }
 
+}
+
+// Sessions List
+.sessions {
+  .item-content {
+
+  }
+  .session-detail {
+    color: rgba( 160, 160, 160, 1 );
+  }
 }
