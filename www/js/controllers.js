@@ -103,8 +103,9 @@ angular.module('starter.controllers', [])
     })
 
 
-    .controller('SessionCtrl', function ($scope, $stateParams, $http, apiEndpoint) {
-        $http.get(apiEndpoint.url + '?type=wcb_session').
+    .controller('SessionCtrl', function ($scope, $stateParams, $http, apiEndpoint, $filter) {
+
+        $http.get(apiEndpoint.url + '?type=wcb_session&filter[posts_per_page]=-1').
             success(function (data, status, headers, config) {
                 $scope.posts = data;
             }).
