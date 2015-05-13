@@ -123,7 +123,12 @@ angular.module('starter.controllers', [])
             });
     })
 
-    .controller('HomeCtrl', function ($scope, $stateParams, $http, $ionicSlideBoxDelegate) {
+    .controller('HomeCtrl', function ($scope, $stateParams, $http, $window, $ionicSlideBoxDelegate) {
+
+        // Redirect to home controller
+        $scope.goHome = function(){
+            $window.location.href = '#/app/home';
+        }
         $http.get('https://central.wordcamp.org/wp-json/posts?type=wordcamp').
             success(function (data, status, headers, config) {
                 $scope.posts = data;
