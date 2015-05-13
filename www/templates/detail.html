@@ -1,9 +1,12 @@
-<ion-nav-bar>
-  <ion-nav-back-button>
-  </ion-nav-back-button>
-</ion-nav-bar>
-
 <ion-view view-title="Session">
+    <ion-nav-bar class="bar-stable">
+        <ion-nav-back-button class="button-clear">
+            <i class="icon ion-ios-arrow-left"></i> Back
+        </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear ion-ios-home-outline" ng-controller="HomeCtrl" ng-click="goHome()"></button>
+    </ion-nav-buttons>
     <ion-content>
     <div class="speaker-tag">
         <img class="avatar" src="{{ post.speaker.avatar }}" alt=""/>
