@@ -103,15 +103,50 @@ angular.module('starter.controllers', [])
     })
 
 
-    .controller('SessionCtrl', function ($scope, $stateParams, $http, apiEndpoint, $filter) {
+    .controller('SessionCtrl', function ($scope, $stateParams, $http, apiEndpoint, $filter, $ionicLoading, $localStorage) {
 
-        $http.get(apiEndpoint.url + '?type=wcb_session&filter[posts_per_page]=-1').
-            success(function (data, status, headers, config) {
-                $scope.posts = data;
-            }).
-            error(function (data, status, headers, config) {
-                // log error
-            });
+        // Let used cached data
+        var cached = $localStorage.sessions;
+
+        if (cached) {
+            console.log('Sessions loaded from cache')
+            $scope.posts = cached;
+            $ionicLoading.hide()
+        }
+        else {
+            // Indicate we are loading something
+            $ionicLoading.show({
+                template: 'getting fresh data...',
+                noBackdrop: true,
+                delay: 1,
+            })
+
+            // Run and get data
+            $http.get(apiEndpoint.url + '?type=wcb_session&filter[posts_per_page]=-1').
+                success(function (data, status, headers, config) {
+
+                    $scope.posts = data;
+                    $localStorage.sessions = data;
+
+                    $ionicLoading.hide()
+
+                }).
+                error(function (data, status, headers, config) {
+                    // log error
+                });
+        }
+
+        $scope.doRefresh = function () {
+            $http.get(apiEndpoint.url +'?type=wcb_session&filter[posts_per_page]=-1').
+                success(function (data) {
+                    $scope.posts = data;
+                    $localStorage.sessions = data;
+                    console.log('new session list loaded from remote');
+                })
+                .finally(function () {
+                    $scope.$broadcast('scroll.refreshComplete');
+                });
+        }
     })
 
     .controller('VenueCtrl', function ($scope, $stateParams, $http, apiEndpoint) {
