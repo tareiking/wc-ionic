@@ -40,3 +40,64 @@
 		font-size: 18px;
 	}
 }
+
+// Single Session
+
+.speaker-tag {
+  padding: 10px;
+  display: block;
+  width: 100%;
+  border-bottom: 1px #ececec solid;
+  //float: left;
+  height: 46px;
+  overflow: hidden;
+
+  .avatar, .name {
+	float: left;
+  }
+
+  .avatar {
+	margin-right: 10px;
+	border-radius: 50%;
+    height: 30px;
+    width: 30px;
+  }
+  .name {
+	text-transform: uppercase;
+	line-height: 2
+  }
+  .time {
+	float: right;
+	padding: 2px 4px;
+	border: 1px solid #ebebeb;
+	border-radius: 5px;
+  }
+}
+
+.session-card {
+  .title-block {
+    background-color: #1f66ad;
+    display: block;
+    padding: 15px 10px 35px 15px;
+    border-top: #e3e3e3 solid 2px;
+
+    .title {
+      color: white;
+      font-size: 48px;
+    }
+  }
+
+  .content-block {
+    padding: 10px;
+  }
+
+  .track {
+    padding: 2px 4px;
+    border: 1px solid #ebebeb;
+    background-color: white;
+    color: #1f66ad; // card BG
+    text-transform: uppercase;
+    float: right;
+  }
+
+}

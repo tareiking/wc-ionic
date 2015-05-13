@@ -7699,3 +7699,44 @@ a.button {
     color: white;
     background-color: rgba(0, 0, 0, 0.5);
     font-size: 18px; }
+
+.speaker-tag {
+  padding: 10px;
+  display: block;
+  width: 100%;
+  border-bottom: 1px #ececec solid;
+  height: 46px;
+  overflow: hidden; }
+  .speaker-tag .avatar, .speaker-tag .name {
+    float: left; }
+  .speaker-tag .avatar {
+    margin-right: 10px;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px; }
+  .speaker-tag .name {
+    text-transform: uppercase;
+    line-height: 2; }
+  .speaker-tag .time {
+    float: right;
+    padding: 2px 4px;
+    border: 1px solid #ebebeb;
+    border-radius: 5px; }
+
+.session-card .title-block {
+  background-color: #1f66ad;
+  display: block;
+  padding: 15px 10px 35px 15px;
+  border-top: #e3e3e3 solid 2px; }
+  .session-card .title-block .title {
+    color: white;
+    font-size: 48px; }
+.session-card .content-block {
+  padding: 10px; }
+.session-card .track {
+  padding: 2px 4px;
+  border: 1px solid #ebebeb;
+  background-color: white;
+  color: #1f66ad;
+  text-transform: uppercase;
+  float: right; }

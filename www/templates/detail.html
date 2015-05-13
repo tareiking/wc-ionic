@@ -1,7 +1,39 @@
 <ion-view view-title="Details">
-    <ion-content class="padding">
-        <h1 ng-bind-html="post.title"></h1>
+    <ion-content>
+    <div class="speaker-tag">
+        <img class="avatar" src="{{ post.speaker.avatar }}" alt=""/>
+        <p class="name">
+            {{ post.speaker.title }}
+        </p>
+        <span class="time">
+            12:00
+        </span>
+    </div>
 
-        <div ng-bind-html="post.content"></div>
+    <div class="session-card green">
+        <span class="title-block">
+            <h1 class="title" ng-bind-html="post.title"></h1>
+            <span class="track">
+                Developer
+            </span>
+        </span>
+
+        <span ng-if="post.excerpt">
+        <div class="content-block">
+            <div class="excerpt">
+                <h3>Intro</h3>
+                <span ng-bind-html="post.content | bye "></span>
+            </div>
+
+            <div class="details">
+                <h3>Details</h3>
+            </div>
+        </div>
+        </span>
+
+        <pre>{{ post }}</pre>
+
+    </div>
+
     </ion-content>
 </ion-view>
