@@ -7723,13 +7723,23 @@ a.button {
     border: 1px solid #ebebeb;
     border-radius: 5px; }
 
+.session-card .card-bg {
+  position: absolute;
+  top: -50%;
+  left: 0;
+  width: 200%;
+  -webkit-filter: blur(200px);
+  -webkit-transform: translate3d(0, 0, 0); }
 .session-card .title-block {
-  background-color: #1f66ad;
+  overflow: hidden;
+  position: relative;
   display: block;
   padding: 15px 10px 35px 15px;
   border-top: #e3e3e3 solid 2px; }
   .session-card .title-block .title {
     color: white;
+    position: relative;
+    z-index: 10;
     font-size: 48px; }
 .session-card .content-block {
   padding: 10px; }
