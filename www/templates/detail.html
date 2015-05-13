@@ -6,7 +6,7 @@
             {{ post.speaker.title }}
         </p>
         <span class="time">
-            12:00
+            {{ ( post.post_meta[0].value * 1000 ) + 7200000 - 43200000 | date: 'EEE h:mm' }}
         </span>
     </div>
 

@@ -12,8 +12,7 @@
 
                 <div>
                     <span class="wc-badge">{{ post.terms.wcb_track[0].name }}</span>
-                    <span class="wc-badge badge-time">{{ post.post_meta[0].value }}</span>
-                    <span class="wc-badge badge-room">Room</span>
+                    <span class="wc-badge badge-time">{{ ( post.post_meta[0].value * 1000 ) + 7200000 - 43200000 | date: 'EEE h:mm' }}</span>
                 </div>
                 <br>
                 <i class="icon ion-ios-arrow-right"></i>
