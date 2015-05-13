@@ -153,10 +153,13 @@ angular.module('starter.controllers', [])
         $http.get('https://central.wordcamp.org/wp-json/posts/3038603').
             success(function (data, status, headers, config) {
                 $scope.post = data;
+
             }).
             error(function (data, status, headers, config) {
                 // log error
             });
+
+
     })
 
     .controller('HomeCtrl', function ($scope, $stateParams, $http, $window, $ionicSlideBoxDelegate) {
