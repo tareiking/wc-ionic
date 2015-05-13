@@ -23,7 +23,7 @@ angular.module('starter.controllers', [])
             })
 
             // Run and get data
-            $http.get(apiEndpoint.url + '?type=wcb_speaker').
+            $http.get(apiEndpoint.url + '?type=wcb_speaker&filter[posts_per_page]=-1').
                 success(function (data, status, headers, config) {
 
                     $scope.posts = data;
@@ -38,7 +38,7 @@ angular.module('starter.controllers', [])
         }
 
         $scope.doRefresh = function () {
-            $http.get(apiEndpoint.url + '?type=wcb_speaker').
+            $http.get(apiEndpoint.url + '?type=wcb_speaker&filter[posts_per_page]=-1').
                 success(function (data) {
                     $scope.posts = data;
                     $localStorage.speakers = data;
