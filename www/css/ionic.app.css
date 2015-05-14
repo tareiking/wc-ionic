@@ -7751,3 +7751,26 @@ a.button {
 
 .sessions .session-detail {
   color: #a0a0a0; }
+
+.session .content-block .card img {
+  display: none !important; }
+
+/**
+ * Typography
+ */
+ul, ol {
+  margin-bottom: 6px; }
+  ul li, ol li {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 9px;
+    margin-left: 1em;
+    list-style: disc; }
+
+p {
+  margin-bottom: 9px !important; }
+
+a {
+  text-decoration: none;
+  border-bottom: 1px dashed #333;
+  color: #333; }

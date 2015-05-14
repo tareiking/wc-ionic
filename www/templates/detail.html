@@ -1,4 +1,4 @@
-<ion-view view-title="Session">
+<ion-view view-title="Session" class="session">
     <ion-nav-bar class="bar-stable">
         <ion-nav-back-button class="button-clear">
             <i class="icon ion-ios-arrow-left"></i> Back
@@ -23,24 +23,22 @@
             <img class="card-bg" src="{{ post.speaker.avatar }}">
             <h1 class="title" ng-bind-html="post.title"></h1>
             <span class="track">
-                Developer
+                {{ post.terms.wcb_track[0].name }}
             </span>
         </span>
 
         <span ng-if="post.excerpt">
         <div class="content-block">
             <div class="excerpt">
-                <h3>Intro</h3>
-                <span ng-bind-html="post.content"></span>
+                <div class="card">
+                    <div class="item item-text-wrap">
+                        <span ng-bind-html="post.content"></span>
+                    </div>
+                </div>
             </div>
 
-            <div class="details">
-                <h3>Details</h3>
-            </div>
         </div>
         </span>
-
-        <pre>{{ post }}</pre>
 
     </div>
 
