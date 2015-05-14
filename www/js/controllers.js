@@ -5,49 +5,9 @@ angular.module('starter.controllers', [])
     .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
     })
 
-    .controller('SpeakersCtrl', function ($scope, $stateParams, $http, apiEndpoint, $ionicLoading, $localStorage) {
+    .controller('SpeakersCtrl', function ($scope, $stateParams, $http, apiEndpoint, $ionicLoading, SpeakersService) {
 
-        // Let used cached data
-        var cached = $localStorage.speakers;
-        if (cached) {
-            console.log('speakers loaded cache')
-            $scope.posts = cached;
-            $ionicLoading.hide()
-        }
-        else {
-            // Indicate we are loading something
-            $ionicLoading.show({
-                template: 'getting fresh data...',
-                noBackdrop: true,
-                delay: 1,
-            })
-
-            // Run and get data
-            $http.get(apiEndpoint.url + '?type=wcb_speaker&filter[posts_per_page]=-1').
-                success(function (data, status, headers, config) {
-
-                    $scope.posts = data;
-                    $localStorage.speakers = data;
-
-                    $ionicLoading.hide()
-
-                }).
-                error(function (data, status, headers, config) {
-                    // log error
-                });
-        }
-
-        $scope.doRefresh = function () {
-            $http.get(apiEndpoint.url + '?type=wcb_speaker&filter[posts_per_page]=-1').
-                success(function (data) {
-                    $scope.posts = data;
-                    $localStorage.speakers = data;
-                    console.log('new speakers list loaded from remote');
-                })
-                .finally(function () {
-                    $scope.$broadcast('scroll.refreshComplete');
-                });
-        }
+        $scope.speakers = SpeakersService.getAllSpeakers();
 
     })
 
@@ -55,9 +15,8 @@ angular.module('starter.controllers', [])
 
         $ionicLoading.show({
             template: 'Retrieving speaker awesomeness',
-            template: '<button ng-click="handleClick()"></button>',
-            noBackdrop: true,
-            delay: 2,
+            noBackdrop: false,
+            delay: 0,
             duration: 15,
 
         })
@@ -65,7 +24,7 @@ angular.module('starter.controllers', [])
         $http.get(apiEndpoint.url + $stateParams.id).
             success(function (data, status, headers, config) {
                 $scope.speaker = data;
-                $ionicLoading.hide()
+                $ionicLoading.hide();
 
                 $avatar = $scope.speaker.avatar;
 
@@ -188,6 +147,13 @@ angular.module('starter.controllers', [])
             error(function (data, status, headers, config) {
                 // log error
             });
+    })
+
+    .controller('FavoritesCtrl', function ($scope, $stateParams, $http) {
+        $scope.addToFavorites = function() {
+            console.log( 'adding this to favorites' );
+
+        }
     })
 
 ;
