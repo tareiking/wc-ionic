@@ -113,7 +113,7 @@ angular.module('starter.controllers', [])
                 .finally(function () {
                     $scope.$broadcast('scroll.refreshComplete');
                 });
-        }
+        };
     })
 
     .controller('VenueCtrl', function ($scope, $stateParams, $http, apiEndpoint) {
