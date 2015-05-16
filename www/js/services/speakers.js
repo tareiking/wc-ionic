@@ -1,27 +1,28 @@
-'use strict';
 angular.module('starter')
 
-.service('SpeakersService', function($localStorage, $http, apiEndpoint) {
+    .factory('SpeakersService', function ($localStorage, $http, apiEndpoint) {
 
-  var speakers = $localStorage.speakers;
+        var speakers = $localStorage.speakers;
 
-  return {
-      getAllSpeakers: function() {
-        if ( speakers ) {
-          return speakers;
-        } else {
+        return {
+            getAllSpeakers: function () {
+                if (speakers) {
+                    console.log('Loading speakers from Cache');
+                    return speakers;
+                } else {
 
-          $http.get(apiEndpoint.url + '?type=wcb_speaker&filter[posts_per_page]=-1')
-            .success(function (data, status, headers, config) {
+                    return $http.get(apiEndpoint.url + '?type=wcb_speaker&filter[posts_per_page]=-1').then(function (response) {
+                        console.log('Speakers cache empty, retrieving from remote');
+                        return response.data;
+                    });
+                }
+            },
+            refreshSpeakers: function () {
+                return $http.get(apiEndpoint.url + '?type=wcb_speaker&filter[posts_per_page]=-1').then(function (response) {
+                    console.log('So fresh, so clean');
+                    return response.data;
+                });
+            }
+        };
 
-              $localStorage.speakers = data; // cache it
-
-              return data;
-
-            }).error(function (data, status, headers, config) {
-            });
-          }
-      },
-  }
-
-});
+    });

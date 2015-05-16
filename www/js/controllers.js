@@ -5,9 +5,18 @@ angular.module('starter.controllers', [])
     .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
     })
 
-    .controller('SpeakersCtrl', function ($scope, $stateParams, $http, apiEndpoint, $ionicLoading, SpeakersService) {
+    .controller('SpeakersCtrl', function ($scope, $stateParams, SpeakersService, $ionicLoading, $localStorage) {
 
-        $scope.speakers = SpeakersService.getAllSpeakers();
+        SpeakersService.getAllSpeakers().then(function (results) {
+            $scope.speakers = results;
+        });
+
+        $scope.refreshSpeakers = function () {
+            SpeakersService.refreshSpeakers().then(function (results) {
+                $scope.speakers = results;
+                $scope.$broadcast('scroll.refreshComplete');
+            });
+        };
 
     })
 
@@ -26,14 +35,13 @@ angular.module('starter.controllers', [])
                 $scope.speaker = data;
                 $ionicLoading.hide();
 
-                $avatar = $scope.speaker.avatar;
+                var avatar = $scope.speaker.avatar;
 
-                if (!$avatar) {
-                    $avatar = "img/placeholder.png";
+                if (!avatar) {
+                    avatar = "img/placeholder.png";
                 }
-                ;
 
-                $scope.speaker.avatar = $avatar.replace('?s=96', '?s=256');
+                $scope.speaker.avatar = avatar.replace('?s=96', '?s=256');
 
             }).
             error(function (data, status, headers, config) {
@@ -96,7 +104,7 @@ angular.module('starter.controllers', [])
         }
 
         $scope.doRefresh = function () {
-            $http.get(apiEndpoint.url +'?type=wcb_session&filter[posts_per_page]=-1').
+            $http.get(apiEndpoint.url + '?type=wcb_session&filter[posts_per_page]=-1').
                 success(function (data) {
                     $scope.posts = data;
                     $localStorage.sessions = data;
@@ -124,7 +132,7 @@ angular.module('starter.controllers', [])
     .controller('HomeCtrl', function ($scope, $stateParams, $http, $window, $ionicSlideBoxDelegate) {
 
         // Redirect to home controller
-        $scope.goHome = function(){
+        $scope.goHome = function () {
             $window.location.href = '#/app/home';
         }
         $http.get('https://central.wordcamp.org/wp-json/posts?type=wordcamp').
@@ -150,8 +158,8 @@ angular.module('starter.controllers', [])
     })
 
     .controller('FavoritesCtrl', function ($scope, $stateParams, $http) {
-        $scope.addToFavorites = function() {
-            console.log( 'adding this to favorites' );
+        $scope.addToFavorites = function () {
+            console.log('adding this to favorites');
 
         }
     })
