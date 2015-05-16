@@ -7,9 +7,7 @@ angular.module('starter.controllers', [])
 
     .controller('SpeakersCtrl', function ($scope, $stateParams, SpeakersService, $ionicLoading, $localStorage) {
 
-        SpeakersService.getAllSpeakers().then(function (results) {
-            $scope.speakers = results;
-        });
+        $scope.speakers = SpeakersService.getAllSpeakers()
 
         $scope.refreshSpeakers = function () {
             SpeakersService.refreshSpeakers().then(function (results) {

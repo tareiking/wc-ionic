@@ -11,9 +11,9 @@ angular.module('starter')
                     return speakers;
                 } else {
 
-                    return $http.get(apiEndpoint.url + '?type=wcb_speaker&filter[posts_per_page]=-1').then(function (response) {
+                    return $http.get(apiEndpoint.url + '?type=wcb_speaker&filter[posts_per_page]=-1').success(function (data) {
                         console.log('Speakers cache empty, retrieving from remote');
-                        return response.data;
+                        return data;
                     });
                 }
             },
