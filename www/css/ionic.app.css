@@ -7770,7 +7770,7 @@ ul, ol {
 p {
   margin-bottom: 9px !important; }
 
-a {
+.card a {
   text-decoration: none;
   border-bottom: 1px dashed #333;
   color: #333; }
