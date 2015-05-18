@@ -166,3 +166,7 @@ p {
   min-height: 240px;
   background: url( ../img/wappu-placeholder.jpg) center center transparent no-repeat;
 }
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none;
+}
