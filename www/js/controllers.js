@@ -23,7 +23,7 @@ angular.module('starter.controllers', [])
         $ionicLoading.show({
             template: '<ion-spinner icon="crescent"></ion-spinner><p>Refreshing speaker details</p>',
             noBackdrop: false,
-            delay: 0,
+            delay: 300,
             duration: 15000,
         })
 
