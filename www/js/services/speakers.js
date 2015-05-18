@@ -22,6 +22,12 @@ angular.module('starter')
                     console.log('So fresh, so clean');
                     return response.data;
                 });
+            },
+            getSingleSpeaker: function (id) {
+                return $http.get(apiEndpoint.url +id).then(function (response) {
+                    console.log('Getting a single...');
+                    return response.data;
+                });
             }
         };
 
