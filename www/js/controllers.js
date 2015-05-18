@@ -43,6 +43,13 @@ angular.module('starter.controllers', [])
     })
 
     .controller('DetailCtrl', function ($scope, $stateParams, SpeakersService, $ionicLoading) {
+        $ionicLoading.show({
+            template: '<ion-spinner icon="crescent"></ion-spinner><p>Getting session information</p>',
+            noBackdrop: false,
+            delay: 300,
+            duration: 15000,
+        })
+
         SpeakersService.getSingleSpeaker( $stateParams.id ).then(function (results) {
             $scope.post = results;
 
