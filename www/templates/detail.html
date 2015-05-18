@@ -7,7 +7,7 @@
     <ion-nav-buttons side="right">
         <button class="button button-icon button-clear ion-ios-home-outline" ng-controller="HomeCtrl" ng-click="goHome()"></button>
     </ion-nav-buttons>
-    <ion-content>
+    <ion-content  ng-show="post != null" ng-cloak>
     <div class="speaker-tag">
         <img class="avatar" src="{{ post.speaker.avatar }}" alt=""/>
         <p class="name">
@@ -20,7 +20,6 @@
 
     <div class="session-card green">
         <span class="title-block">
-            <img class="card-bg" src="{{ post.speaker.avatar }}">
             <h1 class="title" ng-bind-html="post.title"></h1>
             <span class="track">
                 {{ post.terms.wcb_track[0].name }}
