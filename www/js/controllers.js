@@ -24,14 +24,12 @@ angular.module('starter.controllers', [])
             template: 'Retrieving speaker awesomeness',
             noBackdrop: false,
             delay: 0,
-            duration: 15,
-
+            duration: 15000,
         })
 
         $http.get(apiEndpoint.url + $stateParams.id).
             success(function (data, status, headers, config) {
                 $scope.speaker = data;
-                $ionicLoading.hide();
 
                 var avatar = $scope.speaker.avatar;
 
@@ -40,6 +38,8 @@ angular.module('starter.controllers', [])
                 }
 
                 $scope.speaker.avatar = avatar.replace('?s=96', '?s=256');
+
+                $ionicLoading.hide();
 
             }).
             error(function (data, status, headers, config) {

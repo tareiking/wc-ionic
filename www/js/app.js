@@ -20,7 +20,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngStorage'])
         });
     })
 
-    .config(function ($stateProvider, $urlRouterProvider) {
+
+    .config(function ($stateProvider, $urlRouterProvider ) {
         $stateProvider
 
             .state('app', {
