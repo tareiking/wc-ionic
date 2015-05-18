@@ -5,7 +5,7 @@ angular.module('starter.controllers', [])
     .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
     })
 
-    .controller('SpeakersCtrl', function ($scope, $stateParams, SpeakersService, $ionicLoading, $localStorage) {
+    .controller('SpeakersCtrl', function ($scope, $stateParams, SpeakersService) {
 
         $scope.speakers = SpeakersService.getAllSpeakers()
 
@@ -18,7 +18,7 @@ angular.module('starter.controllers', [])
 
     })
 
-    .controller('SpeakerCtrl', function ($scope, $stateParams, $http, apiEndpoint, $ionicLoading) {
+    .controller('SpeakerCtrl', function ($scope, $stateParams, $http, $ionicLoading, SpeakersService) {
 
         $ionicLoading.show({
             template: '<ion-spinner icon="crescent"></ion-spinner><p>Refreshing speaker details</p>',
