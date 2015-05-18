@@ -21,7 +21,7 @@ angular.module('starter.controllers', [])
     .controller('SpeakerCtrl', function ($scope, $stateParams, $http, apiEndpoint, $ionicLoading) {
 
         $ionicLoading.show({
-            template: 'Retrieving speaker awesomeness',
+            template: '<ion-spinner icon="crescent"></ion-spinner><p>Refreshing speaker details</p>',
             noBackdrop: false,
             delay: 0,
             duration: 15000,
