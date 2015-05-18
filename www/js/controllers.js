@@ -27,24 +27,19 @@ angular.module('starter.controllers', [])
             duration: 15000,
         })
 
-        $http.get(apiEndpoint.url + $stateParams.id).
-            success(function (data, status, headers, config) {
-                $scope.speaker = data;
+        SpeakersService.getSingleSpeaker( $stateParams.id ).then(function (results) {
+            $scope.speaker = results;
+            console.log ( results );
+            var avatar = $scope.speaker.avatar;
 
-                var avatar = $scope.speaker.avatar;
+            if (!avatar) {
+                avatar = "img/placeholder.png";
+            }
 
-                if (!avatar) {
-                    avatar = "img/placeholder.png";
-                }
+            $scope.speaker.avatar = avatar.replace('?s=96', '?s=256');
 
-                $scope.speaker.avatar = avatar.replace('?s=96', '?s=256');
-
-                $ionicLoading.hide();
-
-            }).
-            error(function (data, status, headers, config) {
-                // log error
-            })
+            $ionicLoading.hide();
+        });
     })
 
     .controller('DetailCtrl', function ($scope, $stateParams, $http, apiEndpoint) {
