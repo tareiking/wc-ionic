@@ -42,14 +42,12 @@ angular.module('starter.controllers', [])
         });
     })
 
-    .controller('DetailCtrl', function ($scope, $stateParams, $http, apiEndpoint) {
-        $http.get(apiEndpoint.url + $stateParams.id).
-            success(function (data, status, headers, config) {
-                $scope.post = data;
-            }).
-            error(function (data, status, headers, config) {
-                // log error
-            });
+    .controller('DetailCtrl', function ($scope, $stateParams, SpeakersService, $ionicLoading) {
+        SpeakersService.getSingleSpeaker( $stateParams.id ).then(function (results) {
+            $scope.post = results;
+
+            $ionicLoading.hide();
+        });
     })
 
     .controller('SponsorsCtrl', function ($scope, $stateParams, $http, apiEndpoint) {
