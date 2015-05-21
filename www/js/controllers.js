@@ -157,8 +157,8 @@ angular.module('starter.controllers', [])
 
     .controller('FavoritesCtrl', function ($scope, $stateParams, $localStorage, SpeakersService) {
 
-        var favs = $localStorage.favorites;
-
+        var favs = $localStorage.favorites || [];
+        $scope.listCanSwipe = true;
         $scope.addToFavorites = function () {
 
             SpeakersService.getSingleSpeaker( $stateParams.id ).then(function (results) {
@@ -171,7 +171,21 @@ angular.module('starter.controllers', [])
                     'speaker_id': results.speaker.ID
                 };
 
-                favs.push( favorite );
+                if ( favs.length === 0 ) {
+                    favs.push( favorite );
+                } else {
+                    // if favorite isn't already added
+                    var all_ids = [];
+                    for ( var i = 0; i < favs.length; i++ ) {
+                        all_ids.push(favs[i].id);
+                    }
+
+                    if (  all_ids.indexOf( parseInt( $stateParams.id ) ) === -1 ) {
+                        favs.push( favorite );
+                        console.log( 'fav added' );
+                    }
+
+                }
 
                 $localStorage.favorites = favs;
 
@@ -179,10 +193,7 @@ angular.module('starter.controllers', [])
 
         }
 
-        $scope.getFavorites = function() {
-            console.log( favs );
-            return favs;
-        }
+        $scope.favs = favs;
     })
 
 ;
