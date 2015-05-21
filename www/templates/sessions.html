@@ -7,7 +7,7 @@
         <div ng-repeat="post in posts | orderBy : 'post_meta[0].value'" ng-switch="post.speaker.title || '_none'" >
 
             <div ng-switch-when="_none" class="item item-divider">
-                {{ ( post.post_meta[0].value * 1000 ) + 7200000 - 43200000 | date: 'h:mm' }}  {{post.title}}
+                {{ ( post.post_meta[0].value * 1000 ) + 7200000 - 43200000 | date: 'h:mm' }} <span ng-bind-html="post.title"></span>
             </div>
 
             <span ng-switch-default>
