@@ -167,6 +167,7 @@ angular.module('starter.controllers', [])
                     'title': results.title,
                     'id': results.ID,
                     'time': results.post_meta[0].value,
+                    'track': results.terms.wcb_track[0].name,
                     'speaker': results.speaker.title,
                     'speaker_id': results.speaker.ID
                 };
