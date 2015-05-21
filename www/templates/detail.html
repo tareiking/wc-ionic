@@ -5,7 +5,9 @@
         </ion-nav-back-button>
     </ion-nav-bar>
     <ion-nav-buttons side="right">
-        <button class="button button-icon button-clear ion-ios-star-outline" ng-controller="FavoritesCtrl" ng-click="addToFavorites()"></button>
+
+        <button class="button button-icon button-clear" ng-class="idInFavorites( post.ID ) ? 'ion-ios-star' : 'ion-ios-star-outline'" ng-controller="FavoritesCtrl" ng-click="addToFavorites()"></button>
+
     </ion-nav-buttons>
     <ion-content  ng-show="post != null" ng-cloak>
     <div class="speaker-tag">
