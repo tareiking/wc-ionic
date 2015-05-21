@@ -2,12 +2,15 @@ angular.module('starter.controllers', [])
     .constant('apiEndpoint', {
         'url': 'http://brisbane.wordcamp.org/2015/wp-json/posts/'
     })
+
     .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
     })
 
     .controller('SpeakersCtrl', function ($scope, $stateParams, SpeakersService) {
 
-        $scope.speakers = SpeakersService.getAllSpeakers()
+        $scope.speakers = SpeakersService.refreshSpeakers().then(function (results) {
+            $scope.speakers = results;
+        });
 
         $scope.refreshSpeakers = function () {
             SpeakersService.refreshSpeakers().then(function (results) {
