@@ -1,7 +1,7 @@
 <ion-view view-title="Favorites">
     <ion-content>
         <ion-list can-swipe="listCanSwipe">
-            <ion-item ng-repeat="fav in favs | orderBy : 'time'" href="#/app/detail/{{ fav.id }}">
+            <ion-item ng-repeat="fav in favs" href="#/app/detail/{{ fav.id }}">
 
                 <span ng-bind-html="fav.title"></span>
                 <ion-option-button class="button-assertive icon ion-trash-a" ng-click="favs.splice($index, 1)"></ion-option-button>
