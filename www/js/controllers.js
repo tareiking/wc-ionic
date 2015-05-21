@@ -169,28 +169,37 @@ angular.module('starter.controllers', [])
                     'time': results.post_meta[0].value,
                     'track': results.terms.wcb_track[0].name,
                     'speaker': results.speaker.title,
-                    'speaker_id': results.speaker.ID
+                    'speaker_id': results.speaker.ID,
+
                 };
 
                 if ( favs.length === 0 ) {
                     favs.push( favorite );
                 } else {
-                    // if favorite isn't already added
-                    var all_ids = [];
-                    for ( var i = 0; i < favs.length; i++ ) {
-                        all_ids.push(favs[i].id);
-                    }
-
-                    if (  all_ids.indexOf( parseInt( $stateParams.id ) ) === -1 ) {
+                    if ( ! $scope.idInFavorites( $stateParams.id ) ) {
                         favs.push( favorite );
-                        console.log( 'fav added' );
                     }
-
                 }
 
                 $localStorage.favorites = favs;
 
             });
+
+        }
+
+        $scope.idInFavorites = function( id ) {
+            var all_ids = [];
+            var idFound = true;
+
+            for ( var i = 0; i < favs.length; i++ ) {
+                all_ids.push(favs[i].id);
+            }
+
+            if (  all_ids.indexOf( parseInt( id ) ) === -1 ) {
+                idFound = false;
+            }
+
+            return idFound;
 
         }
 
