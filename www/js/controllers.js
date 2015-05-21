@@ -6,11 +6,38 @@ angular.module('starter.controllers', [])
     .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
     })
 
-    .controller('SpeakersCtrl', function ($scope, $stateParams, SpeakersService) {
+    .controller('SpeakersCtrl', function ($scope, $stateParams, SpeakersService, $ionicLoading, $localStorage) {
 
-        $scope.speakers = SpeakersService.refreshSpeakers().then(function (results) {
-            $scope.speakers = results;
-        });
+        // Let used cached data
+        var cached = $localStorage.speakers;
+
+        if (cached) {
+            console.log('Speakers loaded from cache');
+            $scope.speakers = cached;
+            $ionicLoading.hide();
+        }
+        else {
+            // Indicate we are loading something
+            $ionicLoading.show({
+                template: 'Retrieving Speakers',
+                noBackdrop: true,
+                delay: 1
+            })
+
+            // Run and get data
+            $http.get(apiEndpoint.url + '?type=wcb_speakers&filter[posts_per_page]=-1').
+                success(function (data) {
+
+                    $scope.speakers = data;
+                    $localStorage.speakers = data;
+
+                    $ionicLoading.hide();
+
+                }).
+                error(function (data, status, headers, config) {
+                    // log error
+                });
+        }
 
         $scope.refreshSpeakers = function () {
             SpeakersService.refreshSpeakers().then(function (results) {
