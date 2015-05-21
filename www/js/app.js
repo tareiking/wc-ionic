@@ -100,6 +100,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngStorage'])
                 }
             })
 
+            .state('app.favorites', {
+                url: "/favorites",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/favorites.html",
+                        controller: 'FavoritesCtrl'
+                    }
+                }
+            })
+
             .state('app.home', {
                 url: "/home",
                 views: {

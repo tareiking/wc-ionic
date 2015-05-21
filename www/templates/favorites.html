@@ -1,0 +1,16 @@
+<ion-view view-title="Favorites">
+    <ion-content>
+        <ion-refresher pulling-text="Pull to refresh" on-refresh="refreshSpeakers()">
+        </ion-refresher>
+        <ion-item ng-repeat="speaker in speakers | orderBy : 'title'" href="#/app/speaker/{{speaker.ID}}" class="item item-avatar item-icon-right">
+            <img ng-src="{{ speaker.avatar }}" alt="{{speaker.title}}">
+
+            <h2>
+                {{ speaker.title }}
+            </h2>
+
+            <p class="title item-wrap-text" ng-bind-html="speaker.sessions[0].title"></p>
+            <i class="icon ion-ios-arrow-right"></i>
+        </ion-item>
+    </ion-content>1
+</ion-view>

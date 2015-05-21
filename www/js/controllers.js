@@ -155,10 +155,33 @@ angular.module('starter.controllers', [])
             });
     })
 
-    .controller('FavoritesCtrl', function ($scope, $stateParams, $http) {
-        $scope.addToFavorites = function () {
-            console.log('adding this to favorites');
+    .controller('FavoritesCtrl', function ($scope, $stateParams, $localStorage, SpeakersService) {
 
+        var favs = $localStorage.favorites;
+
+        $scope.addToFavorites = function () {
+
+            SpeakersService.getSingleSpeaker( $stateParams.id ).then(function (results) {
+
+                var favorite = {
+                    'title': results.title,
+                    'id': results.ID,
+                    'time': results.post_meta[0].value,
+                    'speaker': results.speaker.title,
+                    'speaker_id': results.speaker.ID
+                };
+
+                favs.push( favorite );
+
+                $localStorage.favorites = favs;
+
+            });
+
+        }
+
+        $scope.getFavorites = function() {
+            console.log( favs );
+            return favs;
         }
     })
 
