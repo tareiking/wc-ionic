@@ -19,6 +19,16 @@
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
     <script src="js/services/speakers.js"></script>
+    <script>
+      $(document).on('click', 'a[href^=http], a[href^=https]', function(e){
+
+        e.preventDefault();
+        var $this = $(this);
+        var target = $this.data('inAppBrowser') || '_blank';
+
+        window.open($this.attr('href'), target, 'location=yes');
+      });
+    </script>
   </head>
 
   <body ng-app="starter">
