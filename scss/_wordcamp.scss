@@ -83,7 +83,11 @@
     padding: 15px 10px 35px 15px;
     border-top: #e3e3e3 solid 2px;
     text-shadow: -2px 1px 8px rgba( 0,0,0,0.2 );
-    background-color: #ececec;
+    background-color: #5cd3bd;
+
+    &.alt {
+      background-color: #fbc772;
+    }
 
     .title {
       color: white;

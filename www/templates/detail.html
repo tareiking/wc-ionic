@@ -21,7 +21,7 @@
     </div>
 
     <div class="session-card green">
-        <span class="title-block">
+        <span class="title-block" ng-class="{alt: post.terms.wcb_track[0].name=='The Forum P419'}">
             <h1 class="title" ng-bind-html="post.title"></h1>
             <span class="track">
                 {{ post.terms.wcb_track[0].name }}
