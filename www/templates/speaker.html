@@ -31,8 +31,8 @@
 
         <div class="card">
             <div class="item item-text-wrap">
-                <a href="/#/app/detail/{{speaker.sessions[0].ID}}"><span
-                        ng-bind-html="speaker.sessions[0].title"></span></a><br><br>
+                <span ng-bind-html="speaker.sessions[0].title"></span>
+                <br><br>
                 <i class="icon ion-ios-calendar-outline"></i>
                 <span class="time"><strong>{{ speaker.sessions[0].post_meta[0].value | date : 'EEE hh:mm'
                     }}</strong></span><br>
