@@ -6,26 +6,21 @@ angular.module('starter.controllers', [])
     .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
     })
 
-    .controller('SpeakersCtrl', function ($scope, $stateParams, SpeakersService, $ionicLoading, $localStorage) {
+    .controller('SpeakersCtrl', function ($scope, $stateParams, SpeakersService, $ionicLoading, $localStorage, $http, apiEndpoint) {
 
         // Let used cached data
         var cached = $localStorage.speakers;
 
-        if (cached) {
-            console.log('Speakers loaded from cache');
-            $scope.speakers = cached;
-            $ionicLoading.hide();
-        }
-        else {
-            // Indicate we are loading something
-            $ionicLoading.show({
-                template: 'Retrieving Speakers',
-                noBackdrop: true,
-                delay: 1
-            })
+        // Indicate we are loading something
+        $ionicLoading.show({
+            template: 'Retrieving Speakers',
+            noBackdrop: true,
+            delay: 1
+        })
 
+        if ( 'undefined' === cached ) {
             // Run and get data
-            $http.get(apiEndpoint.url + '?type=wcb_speakers&filter[posts_per_page]=-1').
+            $http.get(apiEndpoint.url + '?type=wcb_speaker&filter[posts_per_page]=-1').
                 success(function (data) {
 
                     $scope.speakers = data;
@@ -35,16 +30,13 @@ angular.module('starter.controllers', [])
 
                 }).
                 error(function (data, status, headers, config) {
-                    // log error
-                });
-        }
+                })
+            ;
+        } else {
 
-        $scope.refreshSpeakers = function () {
-            SpeakersService.refreshSpeakers().then(function (results) {
-                $scope.speakers = results;
-                $scope.$broadcast('scroll.refreshComplete');
-            });
-        };
+            $scope.speakers = cached;
+            $ionicLoading.hide();
+        }
 
     })
 
