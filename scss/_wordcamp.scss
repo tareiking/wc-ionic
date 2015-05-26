@@ -148,6 +148,10 @@ p {
   margin-bottom: 9px !important;
 }
 
+body {
+  font-family: 'Opens Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
 .card {
   a {
     text-decoration: none;
@@ -174,5 +178,6 @@ p {
 }
 
 .ionic-scroll {
-  margin-bottom: 50px;
+  margin-bottom: 45px;
+  background-color: rgb(250, 246, 243);
 }
