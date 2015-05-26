@@ -8,6 +8,14 @@ angular.module('starter.controllers', [])
 
     .controller('SpeakersCtrl', function ($scope, $stateParams, SpeakersService, $ionicLoading, $localStorage, $http, apiEndpoint) {
 
+
+        $scope.refreshSpeakers = function () {
+            SpeakersService.refreshSpeakers().then(function (results) {
+                $scope.speakers = results;
+                $scope.$broadcast('scroll.refreshComplete');
+            });
+        };
+
         // Let used cached data
         var cached = $localStorage.speakers;
 
