@@ -26,7 +26,9 @@ angular.module('starter.controllers', [])
             delay: 1
         })
 
-        if ( 'undefined' === cached ) {
+        if ( cached === undefined ) {
+
+            console.log( 'new data' );
             // Run and get data
             $http.get(apiEndpoint.url + '?type=wcb_speaker&filter[posts_per_page]=-1').
                 success(function (data) {
@@ -41,7 +43,7 @@ angular.module('starter.controllers', [])
                 })
             ;
         } else {
-
+            console.log( 'cached data' );
             $scope.speakers = cached;
             $ionicLoading.hide();
         }
