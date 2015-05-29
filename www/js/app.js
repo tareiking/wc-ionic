@@ -20,6 +20,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngStorage'])
         });
     })
 
+    .filter('externalLinks', function() {
+        return function(text) {
+            return String(text).replace(/href=/gm, "class=\"ex-link\" href=");
+        }
+    })
 
     .config(function ($stateProvider, $urlRouterProvider ) {
         $stateProvider

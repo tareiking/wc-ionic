@@ -83,7 +83,11 @@
     padding: 15px 10px 35px 15px;
     border-top: #e3e3e3 solid 2px;
     text-shadow: -2px 1px 8px rgba( 0,0,0,0.2 );
-    background-color: #ececec;
+    background-color: #5cd3bd;
+
+    &.alt {
+      background-color: #fbc772;
+    }
 
     .title {
       color: white;
@@ -144,6 +148,10 @@ p {
   margin-bottom: 9px !important;
 }
 
+body {
+  font-family: 'Opens Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
 .card {
   a {
     text-decoration: none;
@@ -170,5 +178,6 @@ p {
 }
 
 .ionic-scroll {
-  margin-bottom: 60px;
+  margin-bottom: 45px;
+  background-color: rgb(250, 246, 243);
 }

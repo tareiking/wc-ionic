@@ -2,12 +2,12 @@ angular.module('starter.controllers', [])
     .constant('apiEndpoint', {
         'url': 'http://brisbane.wordcamp.org/2015/wp-json/posts/'
     })
+
     .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
     })
 
-    .controller('SpeakersCtrl', function ($scope, $stateParams, SpeakersService) {
+    .controller('SpeakersCtrl', function ($scope, $stateParams, SpeakersService, $ionicLoading, $localStorage, $http, apiEndpoint) {
 
-        $scope.speakers = SpeakersService.getAllSpeakers()
 
         $scope.refreshSpeakers = function () {
             SpeakersService.refreshSpeakers().then(function (results) {
@@ -15,6 +15,36 @@ angular.module('starter.controllers', [])
                 $scope.$broadcast('scroll.refreshComplete');
             });
         };
+
+        // Let used cached data
+        var cached = $localStorage.speakers;
+
+        // Indicate we are loading something
+        $ionicLoading.show({
+            template: 'Retrieving Speakers',
+            noBackdrop: true,
+            delay: 1
+        })
+
+        if ( cached === undefined ) {
+
+            // Run and get data
+            $http.get(apiEndpoint.url + '?type=wcb_speaker&filter[posts_per_page]=-1').
+                success(function (data) {
+
+                    $scope.speakers = data;
+                    $localStorage.speakers = data;
+
+                    $ionicLoading.hide();
+
+                }).
+                error(function (data, status, headers, config) {
+                })
+            ;
+        } else {
+            $scope.speakers = cached;
+            $ionicLoading.hide();
+        }
 
     })
 
@@ -29,7 +59,6 @@ angular.module('starter.controllers', [])
 
         SpeakersService.getSingleSpeaker( $stateParams.id ).then(function (results) {
             $scope.speaker = results;
-            console.log ( results );
             var avatar = $scope.speaker.avatar;
 
             if (!avatar) {
@@ -74,7 +103,6 @@ angular.module('starter.controllers', [])
         var cached = $localStorage.sessions;
 
         if (cached) {
-            console.log('Sessions loaded from cache')
             $scope.posts = cached;
             $ionicLoading.hide()
         }
@@ -106,7 +134,6 @@ angular.module('starter.controllers', [])
                 success(function (data) {
                     $scope.posts = data;
                     $localStorage.sessions = data;
-                    console.log('new session list loaded from remote');
                 })
                 .finally(function () {
                     $scope.$broadcast('scroll.refreshComplete');
