@@ -12,7 +12,7 @@ completed in time for the conference, but might make an appearance in another li
 
 ## Demo
 
-![https://github.com/tareiking/wc-ionic/blob/master/wc-ionic-demo.gif]()
+![](https://github.com/tareiking/wc-ionic/blob/master/wc-ionic-demo.gif)
 
 ## Install
 
