@@ -28,7 +28,6 @@ angular.module('starter.controllers', [])
 
         if ( cached === undefined ) {
 
-            console.log( 'new data' );
             // Run and get data
             $http.get(apiEndpoint.url + '?type=wcb_speaker&filter[posts_per_page]=-1').
                 success(function (data) {
@@ -43,7 +42,6 @@ angular.module('starter.controllers', [])
                 })
             ;
         } else {
-            console.log( 'cached data' );
             $scope.speakers = cached;
             $ionicLoading.hide();
         }
@@ -61,7 +59,6 @@ angular.module('starter.controllers', [])
 
         SpeakersService.getSingleSpeaker( $stateParams.id ).then(function (results) {
             $scope.speaker = results;
-            console.log ( results );
             var avatar = $scope.speaker.avatar;
 
             if (!avatar) {
@@ -106,7 +103,6 @@ angular.module('starter.controllers', [])
         var cached = $localStorage.sessions;
 
         if (cached) {
-            console.log('Sessions loaded from cache')
             $scope.posts = cached;
             $ionicLoading.hide()
         }
@@ -138,7 +134,6 @@ angular.module('starter.controllers', [])
                 success(function (data) {
                     $scope.posts = data;
                     $localStorage.sessions = data;
-                    console.log('new session list loaded from remote');
                 })
                 .finally(function () {
                     $scope.$broadcast('scroll.refreshComplete');
